@@ -1,0 +1,43 @@
+body {
+    margin: 0%;
+    overflow: hidden;
+    background-color: aliceblue;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-image: url("./Images/background.webp");
+    background-size: cover;
+}
+
+.Container {
+    background-color: rgba(0, 0, 0, 0.849);
+    margin-left: 15%;
+    margin-right: 15%;
+    height: 100%;
+    text-align: center;
+}
+
+.List {
+    background-color: rgba(71, 60, 60, 0.719);
+    border: 1px solid rgba(255, 255, 255, 0.226);
+    border-radius: 8px;
+    margin-left: 15%;
+    margin-right: 15%;
+
+    text-align: left;
+    padding: 2%;
+    padding-left: 5%;
+}
+
+.List li {
+    list-style: square;
+    margin-bottom: 3%;
+    font-size: 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.205);
+    border-radius: 8px;
+    padding: 1%;
+}
+
+.List li:hover {
+    background-color: rgba(0, 0, 0, 0.432);
+    cursor: pointer;
+}
