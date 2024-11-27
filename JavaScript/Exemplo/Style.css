@@ -1,0 +1,29 @@
+.Container {
+    background-color: antiquewhite;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 5%;
+    height: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.199);
+    border-radius: 8px;
+    padding: 3%;
+    text-align: center;
+}
+
+body {
+    background-color: rgba(128, 128, 128, 0.048);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+input {
+    margin-bottom: 5%;
+}
+
+.btn {
+    padding: 1%;
+    width: 20%;
+    background-color: rgba(0, 0, 255, 0.185);
+    color: black;
+    border: 1px solid black;
+    border-radius: 8px;
+}
