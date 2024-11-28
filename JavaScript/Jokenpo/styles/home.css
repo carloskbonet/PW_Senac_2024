@@ -1,0 +1,78 @@
+body {
+    background-color: rgba(103, 103, 255, 0.986);
+    background-image: url(../Images/paper.png);
+    background-size: contain;
+
+    overflow: hidden;
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: 60% 40%;
+}
+
+.container-left {
+    margin-left: 8%;
+    margin-right: 8%;
+    margin-top: 6.6%;
+    height: 70vh;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.301);
+    border-radius: 12px;
+    text-align: center;
+    padding: 2%;
+}
+
+.container-left img {
+    width: 50%;
+}
+
+.container-right {
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.329);
+    border-radius: 20px;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 73%;
+    padding: 2%;
+    height: 20vh;
+    text-align: center;
+}
+
+.images-grid {
+    display: grid;
+    grid-template-columns: 33% 33% 34%;
+    width: 100%;
+    margin-left: 5%;
+}
+.images-grid img {
+    width: 70%;
+}
+
+.rules {
+    background-color: rgba(0, 0, 0, 0.26);
+    border: 1px solid rgba(0, 0, 0, 0.253);
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 5%;
+    height: auto;
+}
+
+.container-right input {
+    width: 54%;
+    height: 30%;
+    margin-top: 5%;
+    color: white;
+    border: 1px solid rgba(0, 0, 0, 0.185);
+    border-radius: 8px;
+    font-size: 1.3rem;
+}
+
+#startBtn {
+    background-color: blue;
+}
+
+#configsBtn {
+    background-color: rgb(226, 224, 224);
+    color: black;
+}
