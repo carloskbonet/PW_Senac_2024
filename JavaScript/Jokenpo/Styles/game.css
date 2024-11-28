@@ -1,3 +1,59 @@
 body {
     background-color: blue;
 }
+
+.main-container {
+    display: grid;
+    grid-template-columns: 5% 95%;
+    height: 90vh;
+    padding: 1%;
+}
+
+.container-left {
+    border: 1px solid rgba(0, 0, 0, 0.192);
+    border-radius: 8px;
+    background-color: white;
+    margin-right: 10%;
+}
+
+.container-right {
+    border: 1px solid rgba(0, 0, 0, 0.192);
+    border-radius: 8px;
+    background-color: white;
+    padding: 1%;
+    background-image: url(../Images/background-content.webp);
+    background-size: cover;
+}
+
+.content {
+    border: 1px solid rgba(0, 0, 0, 0.24);
+    height: 45vh;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-radius: 12px;
+    background-color: rgba(179, 179, 179, 0.836);
+}
+
+.player-options {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    border: 2px solid black;
+    margin-left: 25%;
+    margin-right: 25%;
+    border-radius: 40px;
+    background-color: rgba(179, 179, 179, 0.836);
+    padding: 3%;
+}
+
+.player-options img {
+    width: 90%;
+    border: 2px solid rgba(0, 0, 0, 0.384);
+    border-radius: 100px;
+}
+
+.player-options img:hover {
+    background-color: black;
+    cursor: pointer;
+}
