@@ -27,11 +27,10 @@ body {
 
 .content {
     border: 1px solid rgba(0, 0, 0, 0.24);
-    height: 45vh;
+    height: 60vh;
     margin-left: 5%;
     margin-right: 5%;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    margin-bottom: 1%;
     border-radius: 12px;
     background-color: rgba(179, 179, 179, 0.836);
 }
@@ -40,8 +39,8 @@ body {
     display: grid;
     grid-template-columns: 33% 33% 33%;
     border: 2px solid black;
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-left: 35%;
+    margin-right: 35%;
     border-radius: 40px;
     background-color: rgba(179, 179, 179, 0.836);
     padding: 3%;
