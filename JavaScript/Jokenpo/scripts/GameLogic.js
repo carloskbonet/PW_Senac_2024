@@ -22,7 +22,4 @@ function PlayerChoice(_number) {
             player = "Tesoura";
             break;
     }
-
-    // Teste
-    response.textContent = `O jogador escolheu ${player}`;
 }
