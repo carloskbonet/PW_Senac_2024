@@ -12,14 +12,28 @@
         <div class="container-right">
 
             <div class="content">
-                <h1 id="response">Esperando . . .</h1>
+                <div id="result">
+
+                    <img id="playerResult" src="../Images/rock.png" alt="Player">
+                    
+                    <div>
+                        <img id="crown" src="../Images/crown.png" alt="">
+                        <img id="skull" src="../Images/skull.png" alt="">
+
+                        <h1 id="response">Esperando . . .</h1>
+                    </div>
+
+                    <img id="computerResult" src="../Images/rock.png" alt="Computer">
+
+                </div>
+
             </div>
 
             <!-- Opções do jogador -->
             <div class="player-options">
-                <img onclick="PlayerChoice(1)" id="rock" src="../Images/rock.png" alt="">
-                <img onclick="PlayerChoice(2)" id="paper" src="../Images/paper.png" alt="">
-                <img onclick="PlayerChoice(3)" id="scissor" src="../Images/scissor.png" alt="">
+                <img onclick="Start(1)" id="rock" src="../Images/rock.png" alt="">
+                <img onclick="Start(2)" id="paper" src="../Images/paper.png" alt="">
+                <img onclick="Start(3)" id="scissor" src="../Images/scissor.png" alt="">
             </div>
         </div>
 

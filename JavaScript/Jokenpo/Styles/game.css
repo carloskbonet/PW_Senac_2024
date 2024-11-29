@@ -27,7 +27,8 @@ body {
 
 .content {
     border: 1px solid rgba(0, 0, 0, 0.24);
-    height: 60vh;
+    height: auto;
+    min-height: 60vh;
     margin-left: 5%;
     margin-right: 5%;
     margin-bottom: 1%;
@@ -56,3 +57,23 @@ body {
     background-color: black;
     cursor: pointer;
 }
+
+#crown {
+    display: none;
+}
+
+#skull {
+    display: block;
+}
+
+
+#result {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    text-align: center;
+}
+
+#result img {
+    width: 90%;
+}
+
