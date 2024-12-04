@@ -1,19 +1,19 @@
-player = "";
-computer = "";
+var player = "";
+var computer = "";
 
-playerImageURL = document.getElementById("playerResult");
-computerImageURL = document.getElementById("computerResult");
+var playerImageURL = document.getElementById("playerResult");
+var computerImageURL = document.getElementById("computerResult");
 
 // 1 para Pedra / 2 para Papel / 3 para Tesoura
-playerNumber = 0;
-computerNumber = 0;
+var playerNumber = 0;
+var computerNumber = 0;
 
 // Elementos do html
-response = document.getElementById("response");
+var response = document.getElementById("response");
 
 // Imagens da resposta
-crown = document.getElementById("crown");
-skull = document.getElementById("skull");
+var crown = document.getElementById("crown");
+var skull = document.getElementById("skull");
 
 
 function Start(_playerChoice) {
