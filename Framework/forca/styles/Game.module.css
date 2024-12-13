@@ -1,0 +1,30 @@
+body {
+    background-color: rgb(200, 200, 255);
+}
+
+.mainContainer div {
+    border: 1px solid rgba(0, 0, 0, 0.307);
+    border-radius: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
+    background-color: white;
+    padding: 2%;
+}
+
+.topContainer {
+    height: 60vh;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.gameImg {
+    width: 15%;
+    margin-left: 25%;
+}
+
+
+
+.botContainer {
+    height: 20vh;
+}
