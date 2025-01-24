@@ -6,6 +6,7 @@ CREATE TABLE Book (
   	isbn INT NOT NULL UNIQUE
 );
 
+----------------------------------------------------------------------------------------------------
 -- Criação de uma linha na tabela
 -- C (CRUD)
 
@@ -16,6 +17,9 @@ INSERT INTO Book (name, autor, releaseDate, isbn) VALUES ('Narnia', 'C.S. Lewis'
 INSERT INTO Book (name, autor, releaseDate, isbn) VALUES ('O despertar da lua caída', 'Sarah Parker', '2024-04-22',54565436543);
 INSERT INTO Book (name, autor, releaseDate, isbn) VALUES ('Verify', 'Colleen Hoover', '2025-01-23',1443765435);
 
+INSERT INTO Book (name, autor, isbn) VALUES ('Verify', 'Colleen Hoover', 1443765435);
+
+----------------------------------------------------------------------------------------------------
 -- Leitura de uma linha da tabela
 -- R (CRUD)
 -- Recupera todos os livros com todos os campos
@@ -31,3 +35,21 @@ SELECT * FROM Book WHERE releaseDate > '2022-01-01';
 
 -- Não será necessário utilizar 
 -- SELECT * FROM Book WHERE releaseDate > '2022-01-01' and autor != 'Colleen Hoover' or autor = 'Leia Stone';
+
+----------------------------------------------------------------------------------------------------
+-- U (CRUD)
+
+UPDATE nomeDaTabela SET campoParaAlterar = NovoValor WHERE campoDaBusca = ValorDaBusca;
+
+UPDATE Book SET autor = 'Roberto' WHERE id = 5;
+UPDATE Book SET isbn = 5521893 WHERE id = 5;
+UPDATE Book SET name = 'Harry Potta' WHERE id = 5;
+UPDATE Book SET releaseDate = '2017-08-08' WHERE id = 5;
+
+
+----------------------------------------------------------------------------------------------------
+-- D (CRUD)
+
+DELETE FROM nomeDaTabela WHERE campoDaBusca = ValorDaBusca;
+
+DELETE FROM Book WHERE id = 3;
