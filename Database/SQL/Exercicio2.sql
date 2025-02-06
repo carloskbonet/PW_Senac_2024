@@ -1,0 +1,27 @@
+CREATE TABLE User(
+    id INTEGER PRIMARY KEY,
+    email VARCHAR(128) NOT NULL UNIQUE,
+    password VARCHAR(128) NOT NULL,
+    name VARCHAR(128),
+    cpf VARCHAR(32) NOT NULL UNIQUE
+);
+
+CREATE TABLE Book(
+    id INTEGER PRIMARY KEY,
+    title VARCHAR(128) NOT NULL,
+    releaseDate DATE NOT NULL,
+    isbn VARCHAR(64) NOT NULL UNIQUE,
+    authorName VARCHAR(128) NOT NULL,
+    genre VARCHAR(32) NOT NULL
+);
+
+CREATE TABLE Loan(
+    id INTEGER PRIMARY KEY,
+    borrowedAt DATE NOT NULL,
+    returnAt DATE NOT NULL,
+
+    userId INT NOT NULL,
+    bookId INT NOT NULL,
+    FOREIGN KEY (userId) REFERENCES User(id),
+    FOREIGN KEY (bookId) REFERENCES Book(id)
+);
