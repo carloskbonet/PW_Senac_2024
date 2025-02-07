@@ -58,7 +58,6 @@ def findByEmail(_email:str):
 
 
 # Update
-
 def update(_field:str, _email:str, _newValue:str):
     try:
         # Verificar se o field é válido
