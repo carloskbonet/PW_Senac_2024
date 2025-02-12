@@ -53,6 +53,19 @@ def findByIsbn(_isbn:str):
     except:
         return { 'status' : 500 , 'message' : 'Something went wrong' };
 
+def findById(_id:str):
+    try:
+        cursor.execute('SELECT * FROM Book WHERE id = ?', (_id,) );
+        book = cursor.fetchone();
+
+        if ( book == None ):
+            return { 'status' : 404, 'message' : 'Book not found' };
+        else:
+            return { 'status' : 200 , 'message' : 'Book found' , 'data' : book }
+
+    except:
+        return { 'status' : 500 , 'message' : 'Something went wrong' };
+
 
 # Update
 def update(_field:str, _isbn:str, _newValue:str):
