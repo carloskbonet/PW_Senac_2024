@@ -1,6 +1,5 @@
 .mainContainer {
     margin: 0%;
-    background-color: black;
     height: 100vh;
     width: 100vw;
     display: grid;
@@ -8,7 +7,6 @@
 }
 
 .form {
-    background-color: rgb(143, 130, 187);
     text-align: center;
     padding-top: 15%;
     border: 1px solid rgba(0, 0, 0, 0.373);

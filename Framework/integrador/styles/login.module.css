@@ -1,0 +1,39 @@
+.form {
+    border: 1px solid rgba(0, 0, 0, 0.414);
+    border-radius: 50px;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 6%;
+    height: 70vh;
+    padding: 1%;
+    background-color: white;
+    text-align: center;
+    padding-top: 3%;
+}
+
+.form input {
+    border: 1px solid rgba(0, 0, 0, 0.511);
+    border-radius: 10px;
+    width: 80%;
+    margin-top: 1.5%;
+    padding: 1.2%;
+}
+
+.form img {
+    width: 10vw;
+    margin-left: 31%;
+    margin-bottom: 5%;
+}
+
+.sendBtn {
+    background-color: rgb(125, 160, 235);
+    color: black;
+    font-size: 18px;
+}
+
+.sendBtn:hover {
+    background-color: rgba(0, 0, 0, 0.686);
+    color: white;
+    cursor: pointer;
+}
+
