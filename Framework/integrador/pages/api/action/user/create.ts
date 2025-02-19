@@ -1,6 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { NextApiRequest, NextApiResponse } from "next";
-import { createUser } from "../../controller/UserController";
+import { create } from "../../controller/UserController";
 import { userRequest } from "@/request/userRequest";
 
 export default async ( req:NextApiRequest , res:NextApiResponse ) => {
@@ -25,7 +25,7 @@ export default async ( req:NextApiRequest , res:NextApiResponse ) => {
 
     // Passar os dados para o controller
 
-    const response = await createUser(email, password, confirmPassword, name);
+    const response = await create(email, password, confirmPassword, name);
 
     return res.status(response.status).json({ message: response.message, data: response.data });
 }

@@ -1,7 +1,7 @@
 import { prisma } from "@/db";
 
 // Create
-export async function createUserModel(_name:string, _email:string , _password:string) {
+export async function createUser(_name:string, _email:string , _password:string) {
 
     const user = await prisma.user.create({
         data: {
@@ -15,7 +15,27 @@ export async function createUserModel(_name:string, _email:string , _password:st
 }
 
 // Read
+export async function findUserByEmail(_email:string) {
 
+    const user = await prisma.user.findUnique({
+        where: {
+            email: _email
+        }
+    });
+
+    return user;
+}
+
+export async function findUserLogin(_email:string , _password:string) {
+    const user = await prisma.user.findFirst({
+        where: {
+            email: _email,
+            password: _password
+        }
+    });
+
+    return user;
+}
 
 // Update
 

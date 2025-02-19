@@ -1,7 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import styles from "@/styles/register.module.css";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function Register() {
+    const router = useRouter();
+
     const [ formData , setFormData ] = useState(
         {
             name: "",
@@ -22,7 +26,8 @@ export default function Register() {
     }
 
     // Função para chamar o servidor
-    async function formSubmit() {
+    async function formSubmit(event:any) {
+        event.preventDefault();
         try {
             // Requisição
             const response = await fetch(`/api/action/user/create`, {
@@ -36,6 +41,10 @@ export default function Register() {
 
             // Exibir resposta
             alert(responseData.message);
+
+            if ( response.status == 201 ) {
+                router.push(`/user/login`);
+            }
 
         }
         catch (err) {
