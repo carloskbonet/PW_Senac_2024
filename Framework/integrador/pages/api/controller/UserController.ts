@@ -1,4 +1,5 @@
 import { createUser, findUserByEmail, findUserLogin } from "../model/user";
+import { generateToken } from "@/services/tokenConfig";
 
 export async function create(_email:string, _password:string, _confirmPassword:string, _name = "") {
     try {
@@ -31,12 +32,16 @@ export async function login(_email:string, _password:string) {
         const userLogin = await findUserLogin(_email, _password);
 
         // Verificar se o usuário foi encontrado
+        console.log(userLogin);
         if ( userLogin == undefined ) {
-            return { status: 404, message: 'Incorrect email or password' };
+            return { status: 400, message: 'Incorrect email or password' };
         }
         else{
             // Deu certo, o usuário poderá fazer Login
-            return { status: 200, message: 'Logged In' };
+            // Gerar token
+            const _token = generateToken(_email);
+
+            return { status: 200, message: 'Logged In', data: _token };
         }
     }
     catch (err) {

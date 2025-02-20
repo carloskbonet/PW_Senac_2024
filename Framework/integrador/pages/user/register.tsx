@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import styles from "@/styles/register.module.css";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { getCookie } from "cookies-next";
+import { checkToken } from "@/services/tokenConfig";
 
 export default function Register() {
     const router = useRouter();
@@ -72,4 +75,28 @@ export default function Register() {
             </form>
         </main>
     );
+}
+
+
+export async function getServerSideProps( {req , res}:any ) {
+    try {
+        const token = await getCookie('authorization', {req , res});
+        if (!token) {
+            throw new Error('Invalid Token');
+        }
+        checkToken(token);
+
+        return {
+            redirect: {
+                permanent: false,
+                destination: '/',
+            },
+            props: {}
+        }
+    }
+    catch(err) {
+        return {
+            props: {}
+        }
+    }
 }

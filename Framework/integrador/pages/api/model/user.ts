@@ -27,7 +27,7 @@ export async function findUserByEmail(_email:string) {
 }
 
 export async function findUserLogin(_email:string , _password:string) {
-    const user = await prisma.user.findFirst({
+    const user = await prisma.user.findUnique({
         where: {
             email: _email,
             password: _password
