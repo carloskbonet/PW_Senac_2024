@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { getCookie } from "cookies-next";
 import { checkToken } from "@/services/tokenConfig";
+import Link from "next/link";
 
 export default function Register() {
     const router = useRouter();
@@ -72,6 +73,9 @@ export default function Register() {
                 <input type="password" placeholder="Confirmação de Senha" onChange={ (e) => { handleFormEdit(e , 'confirmPassword') }  } />
             
                 <input className={styles.sendBtn} type="submit" value="Enviar" />
+
+                <br />
+                <Link href={`/user/login`}>Já tenho uma conta</Link>
             </form>
         </main>
     );
