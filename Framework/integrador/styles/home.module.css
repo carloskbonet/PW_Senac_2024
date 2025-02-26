@@ -6,6 +6,23 @@
 
     padding-top: 0.5%;
     padding-left: 3%;
+
+    animation: navBarColor 10s infinite;
+}
+
+@keyframes navBarColor {
+    0% {
+        background-color: rgb(211, 198, 169);
+    }
+    33% {
+        background-color: rgb(126, 126, 179);
+    }
+    66% {
+        background-color: rgb(133, 169, 133);
+    }
+    100% {
+        background-color: rgb(211, 198, 169);
+    }
 }
 
 .homeButton {
@@ -72,4 +89,38 @@
     padding: 2%;
     margin-top: 3%;
     margin-right: 9%;
+    animation: moveProfileOptions 1s;
+}
+
+@keyframes moveProfileOptions {
+    from {
+        height: 10vh;
+        opacity: 0%;
+        margin-right: 0%;
+    }
+    to {
+        height: 40vh;
+        opacity: 100%;
+        margin-right: 9%;
+    }
+}
+
+.closeProfileBtn {
+    position: relative;
+    float: right;
+}
+
+
+.logoutBtn {
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.426);
+    width: 100%;
+    border-radius: 12px;
+    background-color: rgb(255, 69, 69);
+    color: white;
+}
+
+.logoutBtn:hover {
+    background-color: black;
+    color: white;
 }

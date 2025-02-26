@@ -18,3 +18,21 @@ model user {
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 }
+
+model movie {
+  id Int @id @unique @default(autoincrement())
+
+  name String @unique
+  description String
+  studio String
+  releaseDate String
+  streaming String
+  ageRating String
+  duration String
+  rating Float @default(0)
+  imgURL String?
+  videoURL String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}

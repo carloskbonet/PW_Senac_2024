@@ -2,21 +2,34 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { checkToken } from "@/services/tokenConfig";
-import { getCookie } from "cookies-next";
+import { getCookie, deleteCookie } from "cookies-next";
 import { useState } from "react";
+import { useRouter } from "next/router";
 import styles from "@/styles/home.module.css";
 
 export default function Home() {
   const [profileOptions , setProfileOptions] = useState(false);
+  const router = useRouter();
+
+  function closeProfileOptions() {
+    setProfileOptions(false);
+  }
+
+  function logout() {
+    deleteCookie('authorization');
+    router.reload();
+  }
 
   return (
     <main>
-      
       {
         profileOptions ?
         
         <div className={styles.profileOptions}>
+          <button onClick={closeProfileOptions} className={styles.closeProfileBtn}>X</button>
+          <br /><br />
 
+          <button className={styles.logoutBtn} onClick={logout}>Logout</button>
         </div>
 
         :
