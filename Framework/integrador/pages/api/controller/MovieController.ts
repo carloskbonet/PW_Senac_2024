@@ -12,7 +12,6 @@ export async function create(_name:string, _desc:string, _studio:string, _releas
             return { status: 400, message: 'Movie name already registered' };
         }
 
-
         const response = await createMovie(_name, _desc, _studio, _releaseDate, _streaming, _ageRating, _duration, _videoURL, _imgURL);
 
         return { status: 201, message: 'Movie created', data: response };

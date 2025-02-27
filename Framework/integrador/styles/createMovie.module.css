@@ -1,0 +1,49 @@
+
+.container {
+    background-color: bisque;
+    border-radius: 10px;
+    padding: 1%;
+    margin: 5%;
+    min-height: 75vh;
+    min-width: 80vw;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.container input, .container textarea, .container select {
+    border: 1px solid rgba(0, 0, 0, 0.409);
+    border-radius: 10px;
+    padding: 0.25%;
+    margin-top: 1%;
+    width: 80%;
+    height: 7vh;
+}
+
+.container textarea {
+    resize: none;
+    height: 12vh;
+}
+
+.left {
+    margin-left: 10%;
+}
+
+.videoFrame {
+    border: 1px solid rgba(0, 0, 0, 0.331);
+    border-radius: 15px;
+    width: 80%;
+    height: 50%;
+}
+
+.right input {
+    margin-top: 5%;
+    background-color: rgb(116, 116, 222);
+    color: white;
+    font-weight: 600;
+}
+
+.right input:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
