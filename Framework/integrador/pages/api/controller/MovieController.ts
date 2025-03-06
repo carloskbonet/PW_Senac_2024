@@ -20,3 +20,21 @@ export async function create(_name:string, _desc:string, _studio:string, _releas
         return { status: 500, message: 'Something went wrong', data: err};
     }
 }
+
+
+export async function findByName(_name:string){
+    try {
+        const movieByName = await findMovieByName(_name);
+
+        // Verificar se o filme foi encontrado
+        if ( movieByName == undefined ) {
+            return { status: 404, message: "Movie not found" };
+        }
+
+        return { status: 200, message: "Movie found", data: movieByName };
+
+    }
+    catch(err) {
+        return { status: 500, message: 'Something went wrong', data: err};
+    }
+}

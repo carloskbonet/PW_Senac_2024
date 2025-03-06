@@ -20,6 +20,10 @@ export default function Home() {
     router.reload();
   }
 
+  function redirect(_path:string) {
+    router.push(_path);
+  }
+
   return (
     <main>
       {
@@ -29,6 +33,7 @@ export default function Home() {
           <button onClick={closeProfileOptions} className={styles.closeProfileBtn}>X</button>
           <br /><br />
 
+          <button className={styles.profileButton} onClick={() => {redirect(`/movie/create`)}}>Criação de Filmes</button>
           <button className={styles.logoutBtn} onClick={logout}>Logout</button>
         </div>
 

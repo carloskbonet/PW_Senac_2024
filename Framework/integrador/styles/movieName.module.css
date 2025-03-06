@@ -1,0 +1,65 @@
+.main {
+    margin-left: 7%;
+    margin-right: 7%;
+    background-color: rgb(255, 255, 255);
+    min-height: 100vh;
+    border-left: 1px solid rgba(0, 0, 0, 0.524);
+    border-radius: 1px solid rgba(0, 0, 0, 0.574);
+    padding: 2%;
+}
+
+.movieImg {
+    width: 98%;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.274);
+}
+
+.movieContainer {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+
+.movieVideo {
+    margin-top: 5%;
+    width: 100%;
+    height: 50vh;
+    border: 1px solid rgba(0, 0, 0, 0.508);
+    border-radius: 15px;
+
+}
+
+.movieInfos {
+    margin-left: 2%;
+    margin-right: 10%;
+}
+
+.movieInfos p{
+    color: rgba(0, 0, 0, 0.611);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.name {
+    color: black;
+    font-size: 26px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 900;
+}
+
+.movieInfos h2 {
+    margin-top: 10%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgba(9, 67, 255, 0.999);
+    font-weight: 600;
+}
+
+.streaming {
+    margin-top: 1%;
+    height: 15vh;
+    border-radius: 15px;
+}
+
+.streaming:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
