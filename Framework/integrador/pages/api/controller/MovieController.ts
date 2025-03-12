@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { createMovie, findMovieByName } from "../model/movie";
+import { createMovie, findMovieByName, selectMovies } from "../model/movie";
 
 export async function create(_name:string, _desc:string, _studio:string, _releaseDate:string, _streaming:string,
     _ageRating:string, _duration:string, _videoURL:string, _imgURL:string) {
@@ -33,6 +33,18 @@ export async function findByName(_name:string){
 
         return { status: 200, message: "Movie found", data: movieByName };
 
+    }
+    catch(err) {
+        return { status: 500, message: 'Something went wrong', data: err};
+    }
+}
+
+
+export async function select() {
+    try {
+        const movies = await selectMovies();
+
+        return { status: 200, message: 'Select Movies', data: movies };
     }
     catch(err) {
         return { status: 500, message: 'Something went wrong', data: err};
