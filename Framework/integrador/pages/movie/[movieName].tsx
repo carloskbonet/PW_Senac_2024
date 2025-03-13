@@ -25,7 +25,7 @@ export default function Page(  { movieName }:any  ) {
     useEffect(() => {
         // Adicionar funções dentro do useEffect
         fetchData();
-    });
+    }, []);
 
 
 
@@ -36,7 +36,7 @@ export default function Page(  { movieName }:any  ) {
 
                     <div>
                         <div className={styles.movieContainer}>
-                            <img className={styles.movieImg} src="/kungfupanda.jpg" alt="" />
+                            <img className={styles.movieImg} src={`https://img.youtube.com/vi/${movie.videoURL}/hqdefault.jpg`} alt="" />
 
 
                             <div className={styles.movieInfos}>
@@ -56,10 +56,25 @@ export default function Page(  { movieName }:any  ) {
 
 
                         <div>
-                            <iframe className={styles.movieVideo} src="https://www.youtube.com/embed/q75bGipJzIg" />
+                            <iframe className={styles.movieVideo} src={`https://www.youtube.com/embed/${movie.videoURL}`} />
                         </div>
 
-                        <div>
+                        <div className={styles.commentSection}>
+
+                            <div className={styles.userRating}>
+                                <div className={styles.ratingStars}>
+                                    <input type="radio" name="stars" id="" />
+                                    <input type="radio" name="stars" id="" />
+                                    <input type="radio" name="stars" id="" />
+                                    <input type="radio" name="stars" id="" />
+                                    <input type="radio" name="stars" id="" />
+                                </div>
+
+                                <textarea placeholder="Digite um comentário. . ."></textarea>
+
+                                <input className={styles.sendRating} type="submit" value="Enviar" />
+                            </div>
+
                         </div>
                     </div>
 

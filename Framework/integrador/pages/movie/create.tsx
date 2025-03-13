@@ -4,7 +4,7 @@ import styles from "@/styles/createMovie.module.css";
 import { useState } from "react";
 
 export default function Page() {
-    const [videoURL, setVideoURL]:any = useState("");
+    const [videoURL, setVideoURL]: any = useState("");
 
     const [formData, setFormData] = useState({
         name: "",
@@ -19,21 +19,31 @@ export default function Page() {
     });
 
     // Função para alterar em tempo real os dados do formulário
-    function handleFormEdit(event:any, field:string) {
+    function handleFormEdit(event: any, field: string) {
         setFormData({
             ...formData,
-            [field] : event.target.value
+            [field]: event.target.value
         });
     }
 
     // Call server
-    async function formSubmit(event:any) {
+    async function formSubmit(event: any) {
         event.preventDefault();
         try {
             const response = await fetch(`/api/action/movie/create`, {
                 method: "POST",
-                headers: {'Content-type' : 'application/json'},
-                body: JSON.stringify(formData)
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify({
+                    name: formData.name,
+                    description: formData.description,
+                    studio: formData.studio,
+                    releaseDate: formData.releaseDate,
+                    streaming: formData.streaming,
+                    ageRating: formData.ageRating,
+                    duration: formData.duration,
+                    videoURL: videoURL,
+                    imgURL: formData.imgURL
+                })
             });
 
             const responseData = await response.json();
@@ -47,7 +57,7 @@ export default function Page() {
     }
 
 
-    function getVideo(e:any) {
+    function getVideo(e: any) {
         const videoURLExtracted = extractVideoId(e.target.value);
 
         setVideoURL(videoURLExtracted);
@@ -63,11 +73,11 @@ export default function Page() {
         <main>
             <form className={styles.container} onSubmit={formSubmit}>
                 <div className={styles.left}>
-                    <input type="text" placeholder="Nome" onChange={(e) => {handleFormEdit(e , 'name')}} /><br />
-                    <textarea placeholder="Sinopse" onChange={(e) => {handleFormEdit(e , 'description')}} /><br />
-                    <input type="text" placeholder="Studio" onChange={(e) => {handleFormEdit(e , 'studio')}} /><br />
-                    <input type="date" placeholder="Data de Lançamento" onChange={(e) => {handleFormEdit(e , 'releaseDate')}} /><br />
-                    <select onChange={(e) => {handleFormEdit(e , 'streaming')}}>
+                    <input type="text" placeholder="Nome" onChange={(e) => { handleFormEdit(e, 'name') }} /><br />
+                    <textarea placeholder="Sinopse" onChange={(e) => { handleFormEdit(e, 'description') }} /><br />
+                    <input type="text" placeholder="Studio" onChange={(e) => { handleFormEdit(e, 'studio') }} /><br />
+                    <input type="date" placeholder="Data de Lançamento" onChange={(e) => { handleFormEdit(e, 'releaseDate') }} /><br />
+                    <select onChange={(e) => { handleFormEdit(e, 'streaming') }}>
                         <option value="">Selecione a plataforma</option>
                         <option value="Netflix">Netflix</option>
                         <option value="Prime Video">Amazon Video</option>
@@ -78,7 +88,7 @@ export default function Page() {
                         <option value="Telecine">Telecine</option>
                         <option value="Crunchyroll">Crunchyroll</option>
                     </select><br />
-                    <select onChange={(e) => {handleFormEdit(e , 'ageRating')}}>
+                    <select onChange={(e) => { handleFormEdit(e, 'ageRating') }}>
                         <option value="">Selecione</option>
                         <option value="18">18 Anos</option>
                         <option value="16">16 Anos</option>
@@ -87,7 +97,7 @@ export default function Page() {
                         <option value="10">10 Anos</option>
                         <option value="Livre">Livre</option>
                     </select><br />
-                    <input type="time" placeholder="Duração" onChange={(e) => {handleFormEdit(e , 'duration')}} /><br />
+                    <input type="time" placeholder="Duração" onChange={(e) => { handleFormEdit(e, 'duration') }} /><br />
                     <input type="text" placeholder="URL do trailer (Youtube)" onChange={(e) => { getVideo(e); handleFormEdit(e, 'videoURL'); }} /><br />
                 </div>
 

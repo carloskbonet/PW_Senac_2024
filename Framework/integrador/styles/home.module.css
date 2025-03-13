@@ -60,10 +60,17 @@
     font-size: 18px;
 }
 
+.card:hover {
+    cursor: pointer;
+    opacity: 0.85;
+}
+
+
 .card img {
     border-radius: 10px;
     margin-bottom: 5%;
     height: 63%;
+    width: 100%;
 }
 
 .card hr {

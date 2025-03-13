@@ -90,7 +90,7 @@ export default function Home() {
 
             data.map(movie => (
               <div key={movie.id} className={styles.card} onClick={()=>{ movieClick(movie.name) }} >
-                  <img src="/kungfupanda.jpg" alt="" />
+                  <img src={`https://img.youtube.com/vi/${movie.videoURL}/hqdefault.jpg`} alt="" />
 
                   <hr />
                   <p>{movie.name}</p>

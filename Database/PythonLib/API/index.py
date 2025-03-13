@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 import Loan;
 import Book;
+import User;
 import os;
 
 menuOption = int(-1);
@@ -8,7 +9,48 @@ menuOption = int(-1);
 # Sessão do usuário
 EMAIL = str('email@teste.com');
 
+# Interface de cadastro / login
+while(True):
+    os.system('cls');
+    print('1 - Login');
+    print('2 - Cadastro');
+    print('0 - Sair');    
 
+    menuOption = int(input('Digite: '));
+    
+    if ( menuOption == 0 ):
+        menuOption = -1;
+        exit();
+
+    if ( menuOption == 1 ):
+        os.system('cls');
+        print('Login do Usuário.');
+
+        _email = input('Email: ');
+
+        response = User.findByEmail(_email);
+    
+        if ( response['status'] == 200 ):
+            print('\nLogin realizado com sucesso.');
+            EMAIL = _email;
+            input('\nAperte ENTER para continuar. . .');
+
+            break;
+        else:
+            print('\nEmail incorreto.');
+            input('\nAperte ENTER para continuar. . .');
+
+
+    # Capturar dados e realizar o login. Caso o usuário acerte os dados, passar para a próxima interface
+    # Para prosseguir para proxima interface, basta executar o comando break
+
+    if ( menuOption == 2 ):
+        pass;
+    # Capturar dados do usuário para cadastro. utilizar User.create() para criar um novo usuário
+
+
+
+# Interface interior do sistema
 while (menuOption != 0):
     os.system('cls');
     print('1 - Emprestar um Livro.');

@@ -56,6 +56,18 @@ def findByEmail(_email:str):
     except:
         return { 'status' : 500 , 'message' : 'Something went wrong' };
 
+def findLogin(_email:str , _password:str):
+    try:
+        cursor.execute('SELECT * FROM User WHERE email = ? and password = ?', (_email, _password) );
+        user = cursor.fetchone();
+
+        if ( user == None ):
+            return { 'status' : 404, 'message' : 'User not found' };
+        else:
+            return { 'status' : 200 , 'message' : 'User found' , 'data' : user }
+
+    except:
+        return { 'status' : 500 , 'message' : 'Something went wrong' }; 
 
 # Update
 def update(_field:str, _email:str, _newValue:str):
