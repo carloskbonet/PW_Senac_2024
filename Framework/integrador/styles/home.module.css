@@ -147,3 +147,15 @@
     background-color: rgb(49, 49, 49);
     color: rgb(255, 255, 255);
 }
+
+
+.sideB {
+    height: 80px;
+    width: 10px;
+    background-color: rgb(34, 156, 34);
+    border: 1px solid rgba(0, 0, 0, 0.276);
+    border-radius: 10px;
+    position: absolute;
+    margin-top: 5%;
+    margin-left: -1.8%;
+}

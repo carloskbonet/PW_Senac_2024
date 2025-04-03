@@ -25,6 +25,9 @@ export async function findMovieByName(_name:string) {
     const movie = await prisma.movie.findUnique({
         where: {
             name: _name
+        },
+        include: {
+            ratings: true
         }
     });
 

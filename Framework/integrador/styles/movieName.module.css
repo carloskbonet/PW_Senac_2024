@@ -96,3 +96,37 @@
     display: flex;
     float: right;
 }
+
+
+
+
+.ratingStars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+
+.radio_hide {
+    position: fixed;
+    opacity: 0;
+}
+
+.radio_star {
+    cursor: pointer;
+    color: rgba(117, 117, 117, 0.582);
+}
+
+.radio_star:before {
+    content: '★';
+    display: inline-block;
+    font-size: 38px;
+}
+
+.radio_star:hover , .radio_star:hover~.radio_star {
+    color: gold;
+}
+
+.radio_hide:checked~.radio_star {
+    color: gold;
+}
