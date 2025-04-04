@@ -27,7 +27,11 @@ export async function findMovieByName(_name:string) {
             name: _name
         },
         include: {
-            ratings: true
+            ratings: {
+                include: {
+                    user: true
+                }
+            }
         }
     });
 
