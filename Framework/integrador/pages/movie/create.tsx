@@ -2,8 +2,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import styles from "@/styles/createMovie.module.css";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function Page() {
+    const router = useRouter();
+
     const [videoURL, setVideoURL]: any = useState("");
 
     const [formData, setFormData] = useState({
@@ -49,6 +52,10 @@ export default function Page() {
             const responseData = await response.json();
 
             alert(responseData.message);
+
+            if ( response.status == 201 ) {
+                router.reload();
+            }
 
         }
         catch (err) {
