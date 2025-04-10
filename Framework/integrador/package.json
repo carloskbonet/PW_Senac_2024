@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@material-tailwind/react": "^2.1.10",
     "@prisma/client": "^6.3.1",
     "cookies-next": "^5.1.0",
     "jsonwebtoken": "^8.5.1",
     "next": "15.1.6",
+    "primereact": "^10.9.4",
     "prisma": "^6.3.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

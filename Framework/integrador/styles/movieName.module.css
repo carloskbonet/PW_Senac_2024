@@ -130,3 +130,30 @@
 .radio_hide:checked~.radio_star {
     color: gold;
 }
+
+
+.confirmPopup {
+    border: 1px solid rgba(0, 0, 0, 0.437);
+    border-radius: 10px;
+    width: 20vw;
+    height: 15vh;
+    position: fixed;
+    background-color: white;
+    text-align: center;
+    padding: 1%;
+}
+
+.confirmPopup p {
+    font-size: 16px;
+}
+
+.confirmPopup button {
+    border-radius: 8px;
+    padding-right: 3%;
+    padding-left: 3%;
+}
+
+.confirm {
+    background-color: rgb(31, 154, 165);
+    color: white;
+}

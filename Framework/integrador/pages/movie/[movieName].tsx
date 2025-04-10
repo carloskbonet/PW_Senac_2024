@@ -5,7 +5,11 @@ import { useState, useEffect } from "react";
 import { getCookie } from "cookies-next";
 import { checkToken } from "@/services/tokenConfig";
 
+
 export default function Page({ movieName }: any) {
+    const [currentUser, setCurrentUser] = useState("");
+    const [confirmDelete, setConfirmDelete] = useState(false);
+
     const [movie, setMovie]: any = useState();
     const [ratingForm, setRatingForm] = useState(
         {
@@ -75,12 +79,46 @@ export default function Page({ movieName }: any) {
     };
 
 
+    async function deleteOwnComment() {
+        try {
+            const response = await fetch(`/api/action/rating/delete`, {
+                method: "DELETE",
+                headers: { "Content-type": "application/json" },
+                body: JSON.stringify({
+                    movieName: movieName,
+                    email: currentUser
+                })
+            });
+
+            const responseJson = await response.json();
+
+            alert(responseJson.message);
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+
+    function getCurrentUser() {
+        try {
+            const auth_cookie = getCookie('authorization');
+            const check_auth = checkToken(auth_cookie);
+
+            setCurrentUser(check_auth.email);
+        }
+        catch (err) {
+            console.log("Invalid session data");
+        }
+    }
+
 
     useEffect(() => {
         // Adicionar funções dentro do useEffect
         fetchData();
-    }, []);
+        getCurrentUser();
 
+    }, []);
 
 
     return (
@@ -89,6 +127,20 @@ export default function Page({ movieName }: any) {
                 movie != undefined ?
 
                     <div>
+                        {
+                            confirmDelete ?
+                                <div className={styles.confirmPopup}>
+                                    <p>Deseja apagar o comentário?</p>
+
+                                    <button className={styles.confirm}>Sim</button>
+                                    <button>Não</button>
+                                </div>
+
+                                :
+
+                                <></>
+                        }
+
                         <div className={styles.movieContainer}>
                             <img className={styles.movieImg} src={`https://img.youtube.com/vi/${movie.videoURL}/hqdefault.jpg`} alt="" />
 
@@ -170,7 +222,7 @@ export default function Page({ movieName }: any) {
 
                                     movie.ratings != undefined ?
 
-                                        movie.ratings.map((rating:any) => (
+                                        movie.ratings.map((rating: any) => (
                                             <article key={rating.id} className="p-6 text-base bg-white rounded-lg dark:bg-gray-900">
                                                 <footer className="flex justify-between items-center mb-2">
                                                     <div className="flex items-center">
@@ -179,6 +231,17 @@ export default function Page({ movieName }: any) {
                                                         <p className="text-xl text-gray-700 dark:text-gray-400">
                                                             {rating.value}★</p>
                                                         <p className="text-sm text-gray-600 dark:text-gray-400"> {formatDate(rating.created_at)}</p>
+
+                                                        {
+                                                            rating.user.email == currentUser ?
+
+                                                                <div>
+                                                                    <input onClick={()=>{ setConfirmDelete(true) }} className="bg-black text-[12px] rounded-lg w-5 h-5 text-white p-0" type="submit" value="x" />
+                                                                </div>
+                                                                :
+
+                                                                <></>
+                                                        }
                                                     </div>
 
                                                 </footer>
