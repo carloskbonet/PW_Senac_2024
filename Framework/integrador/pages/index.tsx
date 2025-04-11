@@ -9,7 +9,13 @@ import styles from "@/styles/home.module.css";
 
 export default function Home() {
   const [profileOptions, setProfileOptions] = useState(false);
-  const [data, setData]: any = useState();
+
+  // Armazena todos os filmes
+  const [data, setData]: Array<any> = useState(undefined);
+  // Filmes filtrados
+  const [filteredMovies, setFilteredMovies]: Array<any> = useState(undefined);
+
+  const [name, setName] = useState("");
 
   const router = useRouter();
 
@@ -35,6 +41,7 @@ export default function Home() {
       const responseData = await response.json();
 
       setData(responseData.data);
+      setFilteredMovies(responseData.data);
     }
     catch (err) {
       console.log(err);
@@ -42,8 +49,31 @@ export default function Home() {
   }
 
 
-  function movieClick(movieName:string) {
+  function movieClick(movieName: string) {
     router.push(`/movie/${movieName}`);
+  }
+
+
+  function searchFilter(array: Array<any>, text: string) {
+    if (text == '') {
+      return array;
+    }
+    else {
+      return array.filter((el: any) => el.name.toLowerCase().includes(text.toLowerCase()));
+    }
+  }
+
+  function applyFilter(e: any) {
+    e.preventDefault();
+    try {
+      const filteredArray = searchFilter(data, name);
+
+      // Salvar os filmes filtrados
+      setFilteredMovies(filteredArray);
+    }
+    catch (err) {
+      console.log(err);
+    }
   }
 
 
@@ -77,29 +107,29 @@ export default function Home() {
 
         <img className={styles.homeButton} src="/logo.png" alt="" />
 
-        <div className={styles.searchContainer}>
-          <input type="text" placeholder="Pesquisar" />
-        </div>
+        <form className={styles.searchContainer}>
+          <input onChange={(e) => { setName(e.target.value); applyFilter(e); }} type="text" placeholder="Pesquisar" />
+        </form>
 
         <img className={styles.userProfile} src="/profilepic.png" alt="" onClick={() => { setProfileOptions(true) }} />
       </nav>
 
       <div className={styles.container}>
         {
-          data != undefined && data instanceof Array ?
+          filteredMovies != undefined && filteredMovies instanceof Array ?
 
-            data.map(movie => (
-              <div key={movie.id} className={styles.card} onClick={()=>{ movieClick(movie.name) }} >
-                  <div className={styles.sideB}></div>
-                  <img src={`https://img.youtube.com/vi/${movie.videoURL}/hqdefault.jpg`} alt="" />
+            filteredMovies.map(movie => (
+              <div key={movie.id} className={styles.card} onClick={() => { movieClick(movie.name) }} >
+                <div className={styles.sideB}></div>
+                <img src={`https://img.youtube.com/vi/${movie.videoURL}/hqdefault.jpg`} alt="" />
 
-                  <hr />
-                  <p>{movie.name}</p>
-                  <p>{movie.studio}</p>
-                  <hr />
-                  <p>⭐{movie.rating}   -   {movie.releaseDate}</p>
-                  <hr />
-                </div>
+                <hr />
+                <p>{movie.name}</p>
+                <p>{movie.studio}</p>
+                <hr />
+                <p>⭐{movie.rating}   -   {movie.releaseDate}</p>
+                <hr />
+              </div>
             ))
 
             :

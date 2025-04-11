@@ -4,9 +4,12 @@ import styles from "@/styles/movieName.module.css";
 import { useState, useEffect } from "react";
 import { getCookie } from "cookies-next";
 import { checkToken } from "@/services/tokenConfig";
+import { useRouter } from "next/router";
 
 
 export default function Page({ movieName }: any) {
+    const router = useRouter();
+
     const [currentUser, setCurrentUser] = useState("");
     const [confirmDelete, setConfirmDelete] = useState(false);
 
@@ -45,7 +48,7 @@ export default function Page({ movieName }: any) {
 
             const responseJson = await response.json();
 
-            alert(responseJson.message);
+            router.reload();
 
         }
         catch (err) {
@@ -92,7 +95,7 @@ export default function Page({ movieName }: any) {
 
             const responseJson = await response.json();
 
-            alert(responseJson.message);
+            console.log(responseJson.message);
         }
         catch (err) {
             console.log(err);
@@ -121,6 +124,17 @@ export default function Page({ movieName }: any) {
     }, []);
 
 
+    function confirm() {
+        deleteOwnComment();
+
+        router.reload();
+    }
+
+    function reject() {
+        setConfirmDelete(false);
+    }
+
+
     return (
         <main className={styles.main}>
             {
@@ -132,8 +146,8 @@ export default function Page({ movieName }: any) {
                                 <div className={styles.confirmPopup}>
                                     <p>Deseja apagar o comentário?</p>
 
-                                    <button className={styles.confirm}>Sim</button>
-                                    <button>Não</button>
+                                    <button onClick={confirm} className={styles.confirm}>Sim</button>
+                                    <button onClick={reject} >Não</button>
                                 </div>
 
                                 :

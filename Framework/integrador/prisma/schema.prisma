@@ -39,6 +39,18 @@ model movie {
   updated_at DateTime @updatedAt
 
   ratings rating[]
+  genres genre[]
+}
+
+model genre {
+  id Int @id @unique @default(autoincrement())
+
+  name String @unique
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  movies movie[]
 }
 
 
