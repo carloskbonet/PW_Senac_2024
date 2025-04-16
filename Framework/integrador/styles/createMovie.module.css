@@ -10,7 +10,7 @@
     grid-template-columns: 50% 50%;
 }
 
-.container input, .container textarea, .container select {
+.left input, .container textarea, .container select {
     border: 1px solid rgba(0, 0, 0, 0.409);
     border-radius: 10px;
     padding: 0.25%;
@@ -35,19 +35,37 @@
     height: 50%;
 }
 
-.right input {
+.sendBtn {
+    width: 80%;
+    border: 1px solid rgba(0, 0, 0, 0.386);
+    border-radius: 10px;
+    height: 9%;
     margin-top: 5%;
     background-color: rgb(116, 116, 222);
     color: white;
     font-weight: 600;
 }
 
-.right input:hover {
+.sendBtn:hover {
     background-color: white;
     color: black;
     cursor: pointer;
 }
 
-.right input:focus {
+.sendBtn:focus {
     background-color: rgb(93, 158, 93);
+}
+
+.genresContainer {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    border: 1px solid black;
+    width: 80%;
+    margin-top: 1%;
+    border-radius: 6px;
+    padding: 0.5%;
+}
+
+.checkBox {
+    margin: 3%;
 }

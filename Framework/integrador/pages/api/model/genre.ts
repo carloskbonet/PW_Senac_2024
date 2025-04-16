@@ -19,3 +19,9 @@ export async function findGenreByName(_name:string) {
 
     return genre;
 }
+
+export async function selectGenres() {
+    const genres = await prisma.genre.findMany();
+
+    return genres;
+}

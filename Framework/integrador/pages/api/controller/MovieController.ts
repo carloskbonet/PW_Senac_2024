@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { findGenreByName } from "../model/genre";
 import { createMovie, findMovieByName, selectMovies } from "../model/movie";
 
 export async function create(_name:string, _desc:string, _studio:string, _releaseDate:string, _streaming:string,
-    _ageRating:string, _duration:string, _videoURL:string, _imgURL:string) {
+    _ageRating:string, _duration:string, _videoURL:string, _imgURL:string, _genres:Array<string>) {
     try{
         // Verificar situações que podem impedir a criação do filme (Exceto por dados escritos incorretamente)
         // Verificar se já existe um filme com esse "_name" cadastrado
@@ -12,7 +13,21 @@ export async function create(_name:string, _desc:string, _studio:string, _releas
             return { status: 400, message: 'Movie name already registered' };
         }
 
-        const response = await createMovie(_name, _desc, _studio, _releaseDate, _streaming, _ageRating, _duration, _videoURL, _imgURL);
+        // Verificar se todos os gêneros selecionados de filme existem
+        const verifiedGenres: Array<number> = [];
+
+        for (let i = 0; i < _genres.length; i++) {
+            const genreByName = await findGenreByName(_genres[i]);
+
+            if ( genreByName == undefined ) {
+                return { status: 404, message: 'Genre not found' };
+            }
+            else {
+                verifiedGenres.push(genreByName.id);
+            }
+        }
+
+        const response = await createMovie(_name, _desc, _studio, _releaseDate, _streaming, _ageRating, _duration, _videoURL, _imgURL, verifiedGenres);
 
         return { status: 201, message: 'Movie created', data: response };
     }

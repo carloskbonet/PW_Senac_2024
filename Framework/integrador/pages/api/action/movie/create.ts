@@ -11,8 +11,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     // Receber os dados do front-end
-    const { name, description, studio, releaseDate, streaming, ageRating, duration, videoURL, imgURL } = req.body;
+    const { name, description, studio, releaseDate, streaming, ageRating, duration, videoURL, imgURL, genres } = req.body;
 
+    console.log(genres);
+    
     // Aplicar o tratamento de dados (Request)
     const checkRequest = movieRequest(name, description, studio, releaseDate, streaming, ageRating, duration);
 
@@ -21,7 +23,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     // Passar os dados para o controller
-    const response = await create(name, description, studio, releaseDate, streaming, ageRating, duration, videoURL, imgURL);
+    const response = await create(name, description, studio, releaseDate, streaming, ageRating, duration, videoURL, imgURL, genres);
 
     // Resposta para o front-end
     return res.status(response.status).json({ message: response.message, data: response.data });

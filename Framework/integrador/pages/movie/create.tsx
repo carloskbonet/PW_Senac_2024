@@ -1,11 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import styles from "@/styles/createMovie.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 export default function Page() {
     const router = useRouter();
+
+    // genres , setGenres
+    const [genres, setGenres]: Array<any> = useState(undefined);
+    const selectedGenres: Array<string> = [];
 
     const [videoURL, setVideoURL]: any = useState("");
 
@@ -20,6 +24,20 @@ export default function Page() {
         videoURL: "",
         imgURL: ""
     });
+
+    function handleCheckboxEdit(event: any, _name:string) {
+        if ( event.target.checked ) {
+            selectedGenres.push(_name);
+        }
+        else {
+            const index = selectedGenres.indexOf(_name);
+            
+            if (index != undefined){
+                selectedGenres.splice(index , 1);
+            }
+        }
+    }
+
 
     // Função para alterar em tempo real os dados do formulário
     function handleFormEdit(event: any, field: string) {
@@ -45,7 +63,8 @@ export default function Page() {
                     ageRating: formData.ageRating,
                     duration: formData.duration,
                     videoURL: videoURL,
-                    imgURL: formData.imgURL
+                    imgURL: formData.imgURL,
+                    genres: selectedGenres
                 })
             });
 
@@ -53,7 +72,7 @@ export default function Page() {
 
             alert(responseData.message);
 
-            if ( response.status == 201 ) {
+            if (response.status == 201) {
                 router.reload();
             }
 
@@ -75,6 +94,33 @@ export default function Page() {
         const match = url.match(regex);
         return match ? match[1] : null;
     }
+
+
+    async function fetchData() {
+        try {
+            const response = await fetch(`/api/action/genre/select`, {
+                method: 'GET'
+            });
+
+            const responseData = await response.json();
+
+            // Armazenar os dados
+
+            if (response.status == 200) {
+                setGenres(responseData.data);
+            }
+
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        fetchData();
+
+    }, [])
+
 
     return (
         <main>
@@ -110,7 +156,28 @@ export default function Page() {
 
                 <div className={styles.right}>
                     <iframe className={styles.videoFrame} src={`https://www.youtube.com/embed/${videoURL}`}></iframe>
-                    <input type="submit" value="Enviar" />
+
+                    {
+                        // Seleção de "Genres"
+                    }
+                    <div className={styles.genresContainer}>
+                        {
+                            genres != undefined && genres instanceof Array ?
+
+                                genres.map((genre: any) => (
+                                    <div key={genre.id}>
+                                        <input className={styles.checkBox} type="checkbox" onChange={(e) => {handleCheckboxEdit(e , genre.name)}} />
+                                        <label>{genre.name}</label>
+                                    </div>
+                                ))
+
+                                :
+
+                                <p>Failed to load genres</p>
+                        }
+                    </div>
+
+                    <input className={styles.sendBtn} type="submit" value="Enviar" />
                 </div>
             </form>
         </main>
