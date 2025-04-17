@@ -10,6 +10,8 @@ import { useRouter } from "next/router";
 export default function Page({ movieName }: any) {
     const router = useRouter();
 
+    const [aiResult, setAiResult] = useState("");
+
     const [currentUser, setCurrentUser] = useState("");
     const [confirmDelete, setConfirmDelete] = useState(false);
 
@@ -56,6 +58,30 @@ export default function Page({ movieName }: any) {
         }
     }
 
+    async function gptPromptSubmit(event: any) {
+        event.preventDefault();
+        try {
+            const response = await fetch(`/api/lib/AI/prompt`, {
+                method: "POST",
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify({
+                    movieName: movieName,
+                    ratings: movie.ratings
+                })
+            });
+
+            const responseData = await response.json();
+
+            setAiResult(responseData.data);
+
+            if (response.status == 200)
+                console.log(responseData.data);
+
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
 
     async function fetchData() {
         try {
@@ -181,6 +207,41 @@ export default function Page({ movieName }: any) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <br /><br />
+                        <div className="max-w-5xl mx-auto px-4">
+                            <button onClick={gptPromptSubmit} type="submit" className="text-[15px] text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                Avaliação AI</button>
+
+                            {
+                                aiResult != "" ?
+
+                                <p>{aiResult}</p>
+
+                                :
+
+                                <></>
+                            }
+                        </div>
+
+
+
+
+
+
                         {// Tailwind class
                         }
 
@@ -250,7 +311,7 @@ export default function Page({ movieName }: any) {
                                                             rating.user.email == currentUser ?
 
                                                                 <div>
-                                                                    <input onClick={()=>{ setConfirmDelete(true) }} className="bg-black text-[12px] rounded-lg w-5 h-5 text-white p-0" type="submit" value="x" />
+                                                                    <input onClick={() => { setConfirmDelete(true) }} className="bg-black text-[12px] rounded-lg w-5 h-5 text-white p-0" type="submit" value="x" />
                                                                 </div>
                                                                 :
 
